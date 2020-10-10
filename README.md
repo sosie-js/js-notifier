@@ -6,19 +6,17 @@ Lightweight notification module for websites
 
 - 1.1.3  Fixed incompatibility with eslint 6-7x in formatters/stylish, and provide the example
 - 1.2.0, Layout support has been added:  (Live demo)[http://sosie.sos-productions.com/js-notifier/example/index.html]
+- 1.3.0  SoiSIE class for the logo panel added
 
-## Instalation
+## Installation
 
-### Install via NPM/Yarn
+### Install via Github 
 
-Install package
-
-```shell
-npm install codex-notifier --save
-```
+Install 
 
 ```shell
-yarn add codex-notifier
+git clone https://github.com/sosie-js/js-notifier.git
+git checkout 1.3.0
 ```
 
 #### Require module
