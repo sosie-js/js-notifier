@@ -3,8 +3,28 @@
     &--sosie-panel {
         
         background: #fafffe !important;
-        width: 640px;
-        height: 500px;
-    }
 
+        &::before {
+            /*background: #41ffb1 !important;*/
+        }
+
+        width: 640px;
+        height: 480px;
+    }
+    
+}
+
+.cdx-notify {
+    
+    &--sosie-panel-with-btn {
+        
+        background: #fafffe !important;
+
+        &::before {
+            /*background: #41ffb1 !important;*/
+        }
+
+        width: 640px;
+        height: 540px;
+    }
 }
