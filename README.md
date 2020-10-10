@@ -43,7 +43,7 @@ You should pass there object with notification properties
 - `type` — type of notification: `alert`, `confirm` or `prompt`. `Alert` by default
 - `style` — just add `'cdx-notify--' + style` class. We have some default styles: `success` and `error`
 - `time` — notification expire time in ms. Only for `alert` notifies expires (8s by default)
--  layout — either 'middle' or string with comma holding a combinaison of 'top' or 'bottom' with 'left' or 'right'
+- `layout` — either 'middle' or string with comma holding a combinaison of 'top' or 'bottom' with 'left' or 'right'
 
 #### Confirm notifications properties
 
