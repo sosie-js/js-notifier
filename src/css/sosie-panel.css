@@ -3,13 +3,8 @@
     &--sosie-panel {
         
         background: #fafffe !important;
-
-        &::before {
-            background: #41ffb1 !important;
-        }
-
         width: 640px;
-        height: 600px;
+        height: 500px;
     }
 
 }
