@@ -3,8 +3,10 @@
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
 }
 
+/* https://css-tricks.com/centering-css-complete-guide/ */
+
 .cdx-notifies-middle {
-   position: absolute;
+    position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
@@ -29,6 +31,7 @@
     position: fixed;
     right: 20px;
 }
+
 
 /* Default notification styles */
 .cdx-notify {
