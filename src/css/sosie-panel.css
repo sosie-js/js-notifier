@@ -28,3 +28,33 @@
         height: 540px;
     }
 }
+
+.cdx-notify {
+    
+    &--sosie-panel-embed-injector {
+        
+        background: #fafffe !important;
+
+        &::before {
+            /*background: #41ffb1 !important;*/
+        }
+
+        width: 480px;
+        height: 180px;
+    }
+}
+
+
+.button__embed-injector {
+    display: inline-block;
+    background: #2da0e9;
+    color: #fff;
+    border-radius: 5px;
+    font-size: 13px;
+    padding: 5px 10px;
+    cursor: pointer;
+}
+
+.button__embed-injector:hover {
+    background: #1689d2;
+}

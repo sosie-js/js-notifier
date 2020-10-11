@@ -1,0 +1,203 @@
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>
+      Example for codex.js-notifier
+    </title>
+    <style>
+      body {
+        font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue",sans-serif
+      }
+
+      .table {
+        display: flex;
+        flex-direction: row;
+      }
+
+      .table__row {
+        height: 50vh;
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+      }
+
+      .button__embed-injector {
+        display: inline-block;
+        background: #2da0e9;
+        color: #fff;
+        border-radius: 5px;
+        font-size: 13px;
+        padding: 5px 10px;
+        cursor: pointer;
+      }
+
+      .button__embed-injector:hover {
+        background: #1689d2;
+      }
+    </style>
+  </head>
+  <body>
+   <h2>Notification playground</h2>
+    <div class="table">
+        <span class="button__embed-injector" data-type="menu">info</span>
+    </div>
+    <script src="../dist/bundle.js"></script>
+    <script>
+  
+  
+      /**
+            * Helper for making Elements with attributes
+            *
+            * @param  {string} tagName           - new Element tag name
+            * @param  {array|string} classNames  - list or name of CSS classname(s)
+            * @param  {Object} attributes        - any attributes
+            * @return {Element}
+            */
+            function _make(tagName, classNames, attributes) {
+                
+                let el = document.createElement(tagName);
+
+                if ( Array.isArray(classNames) ) {
+                    el.classList.add(...classNames);
+                } else if( classNames ) {
+                    el.classList.add(classNames);
+                }
+
+                for (let attrName in attributes) {
+                    if(((attrName == 'disabled')||(attrName == 'readonly')) && attributes[attrName])  {
+                        el.setAttribute(attrName,attrName);
+                    } else {
+                       // if(attrName == 'value') el[attrName] = attributes[attrName];
+                        el.setAttribute(attrName,attributes[attrName]);
+                    }
+                }
+
+                return el;
+            }
+            
+  
+      const buttons = document.querySelectorAll('.button__embed-injector');
+
+      Array.from(buttons).forEach(button => {
+          if(button.dataset.type == 'menu') {
+	    button.addEventListener("click", function() {
+	    
+                let sd, anchor, url=''
+
+ 		const d=_make('div',null,null);
+           
+                d.appendChild(document.createTextNode('Welcome to the Url Embed injector'));
+                
+                d.appendChild(_make('hr',null,null));
+                
+                 d.appendChild(document.createTextNode('Type your url '));
+                 
+                  d.appendChild(_make('br',null,null));
+                 
+                const u=_make('input',null,{
+                    id:'url-inject', 
+                    title:'Url',
+                    type:'text', 
+                    style:'width:27em',
+                    size:'300', 
+                    value: url,
+                    placeholder:'Url',
+                });
+                
+                d.appendChild(u);
+                
+                 d.appendChild(_make('br',null,null));
+                
+                 d.appendChild(document.createTextNode(' -- OR click on one link example -- '));
+                
+                 d.appendChild(_make('br',null,null));
+                 
+                [{
+                    type:'injectbtn',
+                    interactive:false,
+                    url:'http://sos-productions.com/7',
+                    mode:'inline',
+                    custom:true,
+                    title:"I am SoSIE, here are lucky people behind the flags click on it!",
+                    text:"Bunny in line"
+                },{
+                    type:'injectbtn',
+                    interactive:false,
+                    url:'https://vimeo.com/357871593',
+                    mode:'block',
+                    custom:false,
+                    title:"COMING FOR YOU - Based on a True Story That Affected 100 Million People",
+                    text:"Coming for you"
+                },{
+                    type:'injectbtn',
+                    interactive:false,
+                    url:'https://youtu.be/E8q2kdTeGzo',
+                    mode:'block',
+                    custom:false,
+                    title:"Eternal Fifty Minutes | Coming for You II",
+                    text:"Eternal Fifty Minutes"
+                }].forEach( sample => {
+                
+                    const anchor=_make('a','sample-injector',{
+                        href:'#',
+                    });
+                    
+                    if(sample.type) delete sample.type;
+                    sample.interactive = false;
+                    
+                    for(var prop in sample) {
+                        anchor.setAttribute('data-'+prop, sample[prop]);
+                    }
+                    
+                    anchor.innerHTML='<span class="button__embed-injector">'+sample.text+'</span>';
+                    d.appendChild(anchor);
+                });
+                
+                
+                notifier.show({
+                    message: d.innerHTML,
+                    type: 'confirm',
+                    okText: 'Ok',
+                    cancelText: 'Cancel',
+                    okHandler: function() {
+                        const u=document.getElementById('url-inject');
+                        url=u.value;
+                        if(url) {
+                            alert(url);
+                        } else {
+                            notifier.show({
+                            message: 'Sorry but url can not be empty, aborting',
+                                layout: 'middle',
+                                style: 'error'
+                            })
+                        }
+                       // injectEmbedByUrl(url, mode, data, api, config);
+                    },
+                    cancelHandler: function() {
+                        
+                    },
+                    layout: 'middle',
+                    style: 'sosie-panel-embed-injector',
+                    inputType: 'textUri',
+                    placeholder: 'your url',
+                    default: url
+                });
+               
+               [].forEach.call(document.querySelectorAll('a.sample-injector'), function(el) {
+                    el.addEventListener('click', function(e) {
+                        const u=document.getElementById('url-inject');
+                        const dataset=e.target.parentElement.dataset;
+                        u.value=dataset.url;
+                    })
+                })
+               
+               
+               
+                return false;
+            }, false);	
+          } 
+      })
+    </script>
+  </body>
+</html>
+
