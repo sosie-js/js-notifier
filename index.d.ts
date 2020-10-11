@@ -26,6 +26,12 @@ export interface NotifierOptions {
    * Only 'alert' notifies expires
    */
   time?: number;
+  
+    /**
+   * Layout
+   * either 'middle' or string with comma holding a combinaison of 'top' or 'bottom' with 'left' or 'right'
+   */
+  layout?: string;
 }
 
 /**
