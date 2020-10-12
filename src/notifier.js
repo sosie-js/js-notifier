@@ -4,12 +4,14 @@
 require('./css/main.css');
 
 /**
- * Codex JavaScript Notification module
+ * Codex JavaScript Notification module upgraded
  *
  * @see https://github.com/sosie-js/js-notifier
  */
 module.exports = (function () {
+    
   const draw = require('./draw.js');
+  const sosiedraw = require('./draw-sosie.js'); //demo extension for the interractive demo of the embed plugin
   const bounceInClass = 'cdx-notify--bounce-in';
 
   
@@ -59,6 +61,9 @@ module.exports = (function () {
         notify = draw.prompt(options);
         break;
 
+      case 'demo':
+        return sosiedraw.demo(options); //We skip wrapper because already added as subset of prompt
+        
       default:
         notify = draw.alert(options);
 
@@ -68,7 +73,8 @@ module.exports = (function () {
     }
 
     wrapper_.appendChild(notify);
-    notify.classList.add(bounceInClass);
+    notify.classList.add(bounceInClass);  
+    
   }
 
   return {

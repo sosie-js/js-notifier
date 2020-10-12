@@ -6,7 +6,7 @@ Lightweight notification module for websites
 
 - 1.1.3  Fixed incompatibility with eslint 6-7x in formatters/stylish, and provide the example
 - 1.2.0  Layout support has been added:  (Live demo)[http://sosie.sos-productions.com/js-notifier/example/index.html]
-- 1.3.0  SoSIE class for the logo panel added (css/sosie-panel.css)
+- 1.3.0  SoSIE class for the logo panel added (css/sosie-panel.css) and demo panel with demonstration playground (example/sosie.html)
 
 ## Installation
 

@@ -1,3 +1,7 @@
+/**
+  Sosie Panel
+ **/
+
 .cdx-notify {
 
     &--sosie-panel {
@@ -29,9 +33,13 @@
     }
 }
 
+
+/**
+ * Panel of the embed demo when interactive mode
+ */
 .cdx-notify {
     
-    &--sosie-panel-embed-injector {
+    &--sosie-panel-embed-demo {
         
         background: #fafffe !important;
 
@@ -45,7 +53,7 @@
 }
 
 
-.button__embed-injector {
+.button__embed-demo {
     display: inline-block;
     background: #2da0e9;
     color: #fff;
@@ -55,6 +63,6 @@
     cursor: pointer;
 }
 
-.button__embed-injector:hover {
+.button__embed-demo:hover {
     background: #1689d2;
 }
