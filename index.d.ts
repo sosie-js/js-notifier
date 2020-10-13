@@ -12,6 +12,7 @@ export interface NotifierOptions {
    * - 'alert' (default)
    * - 'confirm'
    * - 'prompt'
+   * - 'demo'
    */
   type?: string;
 
