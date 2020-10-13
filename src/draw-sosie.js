@@ -44,7 +44,7 @@ module.exports = (function () {
 
     d.appendChild(_make('hr', null, null));
 
-    // Manual Url input
+    // Build the caption input for Url
 
     d.appendChild(document.createTextNode(options.message));
 
@@ -61,6 +61,75 @@ module.exports = (function () {
     });
 
     d.appendChild(u);
+
+    d.appendChild(_make('br', null, null));
+
+    // Build the caption input text
+
+    d.appendChild(document.createTextNode('Provide a text for the caption (optional)'));
+    
+    let c = _make('input', null, {
+      id: 'demo-' + id + '__caption',
+      title: 'Caption ' + id,
+      type: 'text',
+      style: 'width:27em',
+      size: '300',
+      value: options.caption || '',
+      placeholder: 'your caption text',
+    });
+
+    d.appendChild(c);
+
+    // Build the selector for the inject mode (inline or block)
+
+    d.appendChild(document.createTextNode('Inject mode:'));
+
+    const selectList = _make('select', null, {
+      id: 'mySelect',
+      style: 'margin : 2 5 2 5;',
+    });
+
+    var i, option, items = ['inline', 'block'];
+
+    for (i = 0; i < items.length; i++) {
+      option = document.createElement('option');
+      option.value = items[i];
+      option.text = items[i];
+      if (i == 0) {
+        option.setAttribute('selected', 'selected');
+        u.setAttribute('data-mode', items[i]);
+      }
+      selectList.appendChild(option);
+    }
+
+    d.appendChild(selectList);
+
+    d.appendChild(document.createTextNode(' Is it a custom type ? '));
+
+    // Create radio and set default custom to 'No'
+
+    function createRadioElement(name, checked, value) {
+      var radioFragment, radioHtml = '<input type="radio" id="' + name + '__' + value + '" name="' + name + '" value="' + value + '"';
+      if (checked){
+        radioHtml += ' checked="checked"';
+      }
+      radioHtml += '/>';
+
+      radioFragment = document.createElement('div');
+      radioFragment.innerHTML = radioHtml;
+     
+      return radioFragment.firstChild;
+    }
+
+    // Build the custom YES / NO radio group
+
+    d.appendChild(createRadioElement(id + '-custom', false, 'true'));
+    d.appendChild(document.createTextNode(' YES '));
+
+    d.appendChild(createRadioElement(id + '-custom', true, 'false'));
+    d.appendChild(document.createTextNode(' NO '));
+
+    u.setAttribute('data-custom', 'false');
 
     d.appendChild(_make('br', null, null));
 
@@ -97,8 +166,9 @@ module.exports = (function () {
       okHandler: function() {
 
         u = document.getElementById('demo-' + id);
-
-        // Extract dataset
+        c = document.getElementById('demo-' + id + '__caption');
+        
+        // Extract dataset completely from u and stores in data as object more convenient to manipulate
 
         var data = {};
         
@@ -113,6 +183,11 @@ module.exports = (function () {
           }
         });
 
+        // Take account manual change may change url and caption 
+        
+        data.url = u.value;
+        data.title = c.value;
+        
         // NOTE:to have a toSource() equivalent for DOMStringMap use 
         // console.log(JSON.stringify(data))
 
@@ -130,10 +205,22 @@ module.exports = (function () {
       style: 'sosie-panel-' + id + '-demo',
     });
 
+    // Helper to select a value v in a combolist s 
+    
+    function setSelectedIndex(s, v) {
+      for (i = 0; i < s.options.length; i++) {
+        if (s.options[i].text == v) {
+          s.options[i].selected = true;
+          return;
+        }
+      }
+    }
+    
     // Handles click on sample links that should update the value of 'demo-<id>' 
     
     [].forEach.call(document.querySelectorAll('a.sample-demo-' + id), function(el) {
       el.addEventListener('click', function(e) {
+        
         u = document.getElementById('demo-' + id);
         const data = e.target.parentElement.dataset;
         u.value = data.url;
@@ -146,6 +233,32 @@ module.exports = (function () {
           u.setAttribute(attrName, data[key]);
         });
 
+        // update mode select according to data.mode
+
+        setSelectedIndex(document.getElementById('mySelect'), data.mode);
+
+        // Update radio to data.custom
+
+        document.getElementById(id + '-custom__' + data.custom).checked = true;
+
+        // Update caption text
+
+        document.getElementById('demo-' + id + '__caption').value = data.title;
+        
+      });
+    });
+    
+    // Save selected mode change  
+    
+    document.getElementById('mySelect').addEventListener('change', function(e) {
+      u.setAttribute('data-mode', this.options[this.selectedIndex].value);
+    });
+    
+    // Save custom radio click state 
+    
+    ['true', 'false'].forEach(function(item) {
+      document.getElementById(id + '-custom__' + item).addEventListener('click', function() {
+        u.setAttribute('data-custom', this.value);
       });
     });
   };

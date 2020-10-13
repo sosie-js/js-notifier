@@ -79,9 +79,9 @@
                             interactive:false,
                             url:'http://sos-productions.com/7',
                             mode:'inline',
-                            custom:true,
+                            custom:'true',
                             title:"I am SoSIE, here are lucky people behind the flags click on it!",
-                            text:"Bunny in line"
+                            text:"Bunny gift"
                         },{
                             type:'injectbtn',
                             interactive:false,
@@ -89,7 +89,7 @@
                             mode:'block',
                             custom:false,
                             title:"COMING FOR YOU - Based on a True Story That Affected 100 Million People",
-                            text:"Coming for you"
+                            text:"Coming 4U"
                         },{
                             type:'injectbtn',
                             interactive:false,
@@ -97,7 +97,15 @@
                             mode:'block',
                             custom:false,
                             title:"Eternal Fifty Minutes | Coming for You II",
-                            text:"Eternal Fifty Minutes"
+                            text:"Eternal 50mn"
+                        },{
+                            type:"injectbtn",
+                            interactive:false,
+                            url:"https://www.youtube.com/watch?v=Mg5budPRY1Q",
+                            mode:"block",
+                            custom:false,
+                            title:"'Claws of the Red Dragon' exposes connection between Huawei and CCP",
+                            text:"ClawsRedDragon"
                         }
                       ]
                     });     
@@ -129,8 +137,9 @@
                             })
                           }
                         } else{
-                         // Simulate injection
-                          window.location.href=sample.url;
+                          // Simulate injection
+                          alert(JSON.stringify(sample));
+                          //window.location.href=sample.url;
                         }
                     });
                         
