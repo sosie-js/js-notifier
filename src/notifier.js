@@ -63,6 +63,9 @@ module.exports = (function () {
 
       case 'demo':
         return sosiedraw.demo(options); //We skip wrapper because already added as subset of prompt
+      
+      case 'console':
+        return sosiedraw.console(options);
         
       default:
         notify = draw.alert(options);

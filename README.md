@@ -7,6 +7,12 @@ Lightweight notification module for websites
 - 1.1.3  Fixed incompatibility with eslint 6-7x in formatters/stylish, and provide the example
 - 1.2.0  Layout support has been added:  (Live demo)[http://sosie.sos-productions.com/js-notifier/example/index.html]
 - 1.3.0  SoSIE class for the logo panel added (css/sosie-panel.css) and demo of the Embed injector panel (example/sosie.html)
+- 1.4.0  SoSIE console panel added
+
+## Live demos
+
+- Click [here](example/index.html)  for show, prompt, etc.. 
+- Click [here](example/sosie.html)  for demo and console SoSIE's panels extensions 
 
 ## Installation
 
@@ -16,7 +22,7 @@ Install
 
 ```shell
 git clone https://github.com/sosie-js/js-notifier.git
-git checkout 1.3.0
+git checkout 1.4.0
 ```
 
 #### Require module

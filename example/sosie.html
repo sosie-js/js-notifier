@@ -40,6 +40,7 @@
    <h2>Demonstration playground</h2>
     <div class="table">
         <span class="button__demos" data-type="demo">demo embed</span>
+        <span class="button__demos" data-type="console">demo console</span>
     </div>
     <script src="../dist/bundle.js"></script>
     <script>
@@ -149,6 +150,18 @@
 
           }
           
+          if(button.dataset.type == 'console') {
+            button.addEventListener("click", function(e) {
+              notifier.show({
+                type:'console',
+                id:'test',
+                title:'Welcome to the console demo',
+                message:'<b>sample of code:</b>'+document.body.innerHTML+'<br>That is all!',
+                layout: 'right,top',
+              })
+            });
+          }
+                    
          })
  
     </script>

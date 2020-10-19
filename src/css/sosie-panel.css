@@ -66,3 +66,26 @@
 .button__embed-demo:hover {
     background: #1689d2;
 }
+
+
+
+
+/**
+ * Panel of the embed demo when interactive mode
+ */
+.cdx-notify {
+    
+    &--sosie-panel-console-demo {
+        
+        background: #fafffe !important;
+
+        &::before {
+            /*background: #41ffb1 !important;*/
+        }
+
+        width: 450px;
+        height: 300px;
+    }
+}
+
+

@@ -262,8 +262,49 @@ module.exports = (function () {
       });
     });
   };
+  
+  /**
+  * @param {PromptNotifierOptions} options
+  * NOTE no notify return because already added by notifier.show
+  */
+  const console = function (options) {
+
+    const id = options.id;
+
+    const d = _make('div', null, null);
+
+    d.appendChild(document.createTextNode(options.title));
+
+    d.appendChild(_make('hr', null, null));
+    
+    let iframe = _make('iframe', null, {
+      id: 'demo-console-' + id,
+      style: 'width:27em;height: 100%',
+      frameborder: '0',
+      scrolling: 'yes',
+      /*style="width:100%;" height="100%"  
+      allowfullscreen*/
+    });
+
+    d.appendChild(iframe);
+    
+    notifier.show({
+      message: d.innerHTML,
+      layout: options.layout || 'right',
+      time: 0,
+      style: 'sosie-panel-console-demo',
+    });
+    
+    // Alt. 2: Document write ("old school"), Blob approach is not compatible with IE11
+    var doc = document.querySelector('#demo-console-' + id).contentWindow.document;
+    doc.open();
+    doc.write(options.message);
+    doc.close();
+    
+  };
 
   return {
     demo,
+    console,
   };
 })();
