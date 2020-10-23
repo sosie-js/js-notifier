@@ -3,6 +3,7 @@
  * 
  * @version 1.4.0
  * 
+ * @package https://github.com/sosie-js/js-notifier
  * @licence MIT
  * @author CodeX <https://codex.so>
  * @author SoSIE <https://sosie.sos-productions.com>

@@ -55,7 +55,7 @@ module.exports = (env, argv) => {
       }),
 
       new webpack.BannerPlugin({
-        banner: `js-notifier with demo extension for SoSIE\n\n@version ${VERSION}\n\n@licence MIT\n@author CodeX <https://codex.so>\n@author SoSIE <https://sosie.sos-productions.com>`,
+        banner: `js-notifier with demo extension for SoSIE\n\n@version ${VERSION}\n\n@package https://github.com/sosie-js/js-notifier\n@licence MIT\n@author CodeX <https://codex.so>\n@author SoSIE <https://sosie.sos-productions.com>`,
       }),
      ],
     output: {

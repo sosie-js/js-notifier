@@ -1,3 +1,5 @@
+![](https://badgen.net/badge/SoS正/0.8.0/f2a) ![](https://badgen.net/badge/editor.js/v2.1.9/blue) ![](https://badgen.net/badge/js-notifier/v1.4.0/orange) 
+
 # JavaScript Notifier
 
 Lightweight notification module for websites
